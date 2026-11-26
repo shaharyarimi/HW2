@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -143,7 +144,23 @@ public class BigramModel {
      * @pre: fileName is a legal file path
      */
     public void saveModel(String fileName) throws IOException { // Question 3
-        // TODO: implement
+        File fromFile = new File(fileName);
+        BufferedWriter fWriter1 = new BufferedWriter (new FileWriter(fromFile + VOC_FILE_SUFFIX));
+        BufferedWriter fWriter2 = new BufferedWriter (new FileWriter(fromFile + COUNTS_FILE_SUFFIX));
+        int numOfWords = this.mVocabulary.length;
+        fWriter1.write(numOfWords + " words" + System.lineSeparator());
+        for(int i =0; i< numOfWords; i++) {
+            fWriter1.write(i + "," + this.mVocabulary[i] + System.lineSeparator());
+            for (int j=0; j<numOfWords;j++)
+                {
+                    if (this.mBigramCounts[i][j] != 0) {
+                        fWriter2.write(i + "," + j + ":"+this.mBigramCounts[i][j] + System.lineSeparator());
+                    } 
+                }  
+        }
+        fWriter1.close();
+        fWriter2.close();
+
     }
 
     /*
