@@ -13,26 +13,24 @@ public class InventoryComponent implements IComponent {
 
 	private static final float INITIAL_MAX_WEIGHT = 10.0f;
 
-	// TODO: add the fields:
+	private  Inventory inventory = new NaiveInventory();
+	private float maxWeight = INITIAL_MAX_WEIGHT;
 	//       - an Inventory, initialized to a new NaiveInventory
 	//       - a float maxWeight, initialized to INITIAL_MAX_WEIGHT
 
 	public Inventory getInventory() {
-		// TODO: implement
-		return null;
+		return inventory;
 	}
 
 	public Vector2 getInventoryPosition() {
-		// TODO: implement (return the constant)
-		return null;
+		return INVENTORY_POSITION;
 	}
 
 	public float getMaxWeight() {
-		// TODO: implement
-		return 0.f;
+		return maxWeight;
 	}
 
 	public void setMaxWeight(float maxWeight) {
-		// TODO: implement
+		this.maxWeight = maxWeight;
 	}
 }
